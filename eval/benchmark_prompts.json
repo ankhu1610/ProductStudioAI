@@ -1,0 +1,22 @@
+{
+  "schema_version": "0.1",
+  "description": "Canonical Phase 2 benchmark cases. These prompts and seeds are versioned so measured comparisons are reproducible.",
+  "defaults": {
+    "width": 512,
+    "height": 512,
+    "guidance_scale": 7.5,
+    "negative_prompt": "text, watermark, logo distortion, duplicate product, cropped product, deformed object"
+  },
+  "cases": [
+    {"id": "sneaker-neon", "image": "data/demo_inputs/sneaker.png", "mask": "data/demo_inputs/sneaker_mask.png", "prompt": "premium sneaker campaign on wet neon asphalt at night, cinematic reflections, product photography", "seed": 101},
+    {"id": "watch-marble", "image": "data/demo_inputs/watch.png", "mask": "data/demo_inputs/watch_mask.png", "prompt": "luxury watch on a white marble surface, soft window light, high-end studio product photography", "seed": 102},
+    {"id": "bottle-beach", "image": "data/demo_inputs/bottle.png", "mask": "data/demo_inputs/bottle_mask.png", "prompt": "refreshing beverage campaign on a sunlit tropical beach, condensation, premium commercial photography", "seed": 103},
+    {"id": "headphones-desk", "image": "data/demo_inputs/headphones.png", "mask": "data/demo_inputs/headphones_mask.png", "prompt": "wireless headphones on a minimalist walnut desk, warm morning light, editorial product photograph", "seed": 104},
+    {"id": "bag-cafe", "image": "data/demo_inputs/bag.png", "mask": "data/demo_inputs/bag_mask.png", "prompt": "fashion handbag in an elegant cafe setting, shallow depth of field, luxury campaign photography", "seed": 105},
+    {"id": "skincare-bathroom", "image": "data/demo_inputs/skincare.png", "mask": "data/demo_inputs/skincare_mask.png", "prompt": "skincare product on a clean spa bathroom counter, botanical shadows, premium beauty advertisement", "seed": 106},
+    {"id": "chair-living-room", "image": "data/demo_inputs/chair.png", "mask": "data/demo_inputs/chair_mask.png", "prompt": "modern lounge chair in a sunlit Scandinavian living room, interior design editorial", "seed": 107},
+    {"id": "coffee-kitchen", "image": "data/demo_inputs/coffee-maker.png", "mask": "data/demo_inputs/coffee-maker_mask.png", "prompt": "espresso machine in a stylish home kitchen, warm morning light, premium appliance advertisement", "seed": 108},
+    {"id": "lamp-bedroom", "image": "data/demo_inputs/lamp.png", "mask": "data/demo_inputs/lamp_mask.png", "prompt": "designer table lamp in a calm modern bedroom, evening ambience, interior photography", "seed": 109},
+    {"id": "jacket-street", "image": "data/demo_inputs/jacket.png", "mask": "data/demo_inputs/jacket_mask.png", "prompt": "outdoor jacket in an urban autumn street setting, golden hour, premium fashion campaign", "seed": 110}
+  ]
+}

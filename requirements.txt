@@ -1,0 +1,11 @@
+## Legacy dependencies for the original educational implementation in sd/.
+## ProductStudio AI uses pyproject.toml instead. Do not use these pins for the
+## RTX 5070 Ti ProductStudio environment; install CUDA-enabled PyTorch first,
+## then run: pip install -e ".[dev,tracking]"
+
+torch==2.0.1
+numpy==1.25.0
+tqdm==4.65.0
+transformers==4.33.2
+lightning==2.0.9
+pillow==9.5.0

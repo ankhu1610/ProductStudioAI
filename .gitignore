@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+venv/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+
+# Model weights, datasets, and generated artifacts
+data/models/
+data/datasets/
+data/cache/
+outputs/
+mlruns/
+*.ckpt
+*.safetensors
+*.pt
+*.pth
+
+# Local databases and observability state
+*.db
+*.sqlite
+
+# Jupyter and operating-system files
+.ipynb_checkpoints/
+Thumbs.db
+~$*.docx
