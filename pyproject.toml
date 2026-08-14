@@ -3,7 +3,7 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "productstudio-ai"
+name = "productstudioai"
 version = "0.1.0"
 description = "Mask-aware latent diffusion for e-commerce product-background generation."
 readme = "README.md"

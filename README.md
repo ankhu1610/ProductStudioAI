@@ -4,7 +4,7 @@ ProductStudio AI is a planned mask-aware latent-diffusion service for e-commerce
 
 ## Status
 
-Phase 0 (foundation) is in progress. The current `sd/` directory remains a from-scratch Stable Diffusion v1.5 learning implementation. The production service will be built in `app/` in later phases.
+Phases 0-1 are in progress. The current `sd/` directory remains a from-scratch Stable Diffusion v1.5 learning implementation. The production service is being built in `app/`.
 
 ## Business problem
 
