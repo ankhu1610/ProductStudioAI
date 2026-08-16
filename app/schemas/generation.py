@@ -18,7 +18,7 @@ class GenerationRequest(BaseModel):
     width: int = Field(default=512, ge=64, le=1024)
     height: int = Field(default=512, ge=64, le=1024)
     num_variants: int = Field(default=1, ge=1, le=4)
-    scheduler: Literal["ddim"] = "ddim"
+    scheduler: Literal["ddim", "pndm", "dpm_solver", "euler_a"] = "ddim"
 
     @field_validator("width", "height")
     @classmethod
@@ -42,8 +42,10 @@ class GenerationMetadata(BaseModel):
     negative_prompt: str
     resolution: str
     latency_seconds: float
+    peak_gpu_memory_mb: float | None = None
     device: str
     foreground_pixel_difference: float
+    clip_similarity: float | None = None
     input_image: str
     input_mask: str
     generated_image: str

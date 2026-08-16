@@ -37,7 +37,7 @@ tracking = ["mlflow>=2.16"]
 productstudio-verify = "scripts.verify_environment:main"
 
 [tool.setuptools.packages.find]
-include = ["app*", "scripts*"]
+include = ["app*", "scripts*", "eval*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

@@ -87,7 +87,7 @@ class ProductStudioPipeline:
             variant_request = request.model_copy(update={"seed": variant_seed})
 
             # Generate background via diffusers pipeline
-            gen_bg, latency = self.generation_service.generate_background(
+            gen_bg, latency, peak_gpu_memory_mb = self.generation_service.generate_background(
                 prepared.image,
                 prepared.inpaint_mask,
                 variant_request,
@@ -128,6 +128,7 @@ class ProductStudioPipeline:
                 negative_prompt=request.negative_prompt,
                 resolution=f"{request.width}x{request.height}",
                 latency_seconds=round(latency, 3),
+                peak_gpu_memory_mb=peak_gpu_memory_mb,
                 device=self.settings.device,
                 foreground_pixel_difference=pixel_diff,
                 input_image=str(input_img_path),

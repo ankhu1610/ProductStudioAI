@@ -4,7 +4,7 @@ ProductStudio AI is a planned mask-aware latent-diffusion service for e-commerce
 
 ## Status
 
-Phases 0-1 are in progress. The current `sd/` directory remains a from-scratch Stable Diffusion v1.5 learning implementation. The production service is being built in `app/`.
+Phases 0-1 are complete. Phase 2 adds the benchmark runner under `eval/` and `scripts/benchmark.py`.
 
 ## Business problem
 
@@ -46,7 +46,13 @@ Read [`data/README_SETUP.md`](data/README_SETUP.md) before downloading any model
 
 ## Reproducible benchmarks
 
-The fixed benchmark cases live in [`eval/benchmark_prompts.json`](eval/benchmark_prompts.json). Phase 2 will add the evaluation runner; it will use these committed prompts, masks, seeds, and step counts to reproduce benchmark numbers.
+The fixed benchmark cases live in [`eval/benchmark_prompts.json`](eval/benchmark_prompts.json). Run the Phase 2 suite with:
+
+```powershell
+python -m scripts.benchmark
+```
+
+See [`eval/README.md`](eval/README.md) for output files, metrics, and optional flags.
 
 ## Repository layout
 
