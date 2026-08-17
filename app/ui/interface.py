@@ -15,6 +15,7 @@ from app.core.config import Settings, get_settings
 from app.schemas.generation import GenerationRequest
 from app.services.database import DatabaseService, JobRecord
 from app.services.pipeline import PipelineResult, ProductStudioPipeline
+from app.services.tracking import MLflowTracker
 
 ROOT = Path(__file__).resolve().parents[2]
 DEMO_DIR = ROOT / "data" / "demo_inputs"
@@ -99,11 +100,13 @@ def build_gradio_app(
     settings: Settings | None = None,
     pipeline: ProductStudioPipeline | None = None,
     db: DatabaseService | None = None,
+    tracker: MLflowTracker | None = None,
 ) -> gr.Blocks:
     """Create the interactive Gradio Blocks application."""
     settings = settings or get_settings()
     pipeline = pipeline or ProductStudioPipeline(settings=settings)
     db = db or DatabaseService(settings=settings)
+    tracker = tracker or MLflowTracker(settings=settings)
 
     def on_generate(
         image_input: Image.Image | None,
@@ -163,6 +166,7 @@ def build_gradio_app(
                 metadata_files=[v.metadata_path.name for v in result.variants],
             )
             db.save_job(record)
+            tracker.log_generation(result)
 
             final_imgs = [v.final_image for v in result.variants]
             bg_imgs = [v.generated_background for v in result.variants]
