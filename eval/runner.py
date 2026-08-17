@@ -359,7 +359,11 @@ class BenchmarkRunner:
         try:
             import mlflow
 
-            mlflow.set_tracking_uri(self.settings.mlflow_tracking_uri)
+            uri = str(self.settings.mlflow_tracking_uri)
+            if "://" not in uri:
+                uri = Path(uri).resolve().as_uri()
+
+            mlflow.set_tracking_uri(uri)
             mlflow.set_experiment("productstudio-benchmarks")
 
             with mlflow.start_run(run_name=f"benchmark_{datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')}"):

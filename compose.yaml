@@ -1,0 +1,29 @@
+services:
+  productstudio-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: productstudio-ai
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - PRODUCTSTUDIO_DEVICE=cuda
+      - PRODUCTSTUDIO_PRECISION=fp16
+      - PRODUCTSTUDIO_MODEL_ID=stable-diffusion-v1-5/stable-diffusion-inpainting
+      - PRODUCTSTUDIO_OUTPUT_DIR=/app/outputs
+      - PRODUCTSTUDIO_DATABASE_URL=sqlite:////app/outputs/productstudio.db
+      - PRODUCTSTUDIO_MLFLOW_TRACKING_URI=sqlite:////app/outputs/mlflow.db
+      - HF_HOME=/home/appuser/.cache/huggingface
+    volumes:
+      - ./outputs:/app/outputs
+      - ./mlruns:/app/mlruns
+      - ./data:/app/data
+      - ${USERPROFILE}/.cache/huggingface:/home/appuser/.cache/huggingface
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]

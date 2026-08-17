@@ -1,11 +1,12 @@
-"""Central, environment-driven configuration for ProductStudio AI."""
-
+import os
 from functools import lru_cache
 from pathlib import Path
 from typing import Literal
 
 from pydantic import field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+os.environ.setdefault("MLFLOW_ALLOW_FILE_STORE", "true")
 
 
 class Settings(BaseSettings):
@@ -26,7 +27,7 @@ class Settings(BaseSettings):
     max_variants: int = 4
 
     database_url: str = "sqlite:///productstudio.db"
-    mlflow_tracking_uri: str = "mlruns"
+    mlflow_tracking_uri: str = "sqlite:///mlflow.db"
 
     @field_validator("default_width", "default_height")
     @classmethod

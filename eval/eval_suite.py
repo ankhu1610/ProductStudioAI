@@ -269,7 +269,11 @@ def _log_to_mlflow(
     except ImportError:
         return
 
-    mlflow.set_tracking_uri(settings.mlflow_tracking_uri)
+    uri = str(settings.mlflow_tracking_uri)
+    if "://" not in uri:
+        uri = Path(uri).resolve().as_uri()
+
+    mlflow.set_tracking_uri(uri)
     mlflow.set_experiment("productstudio-benchmarks")
     recommendation = summary_payload["recommendation"]
     assert isinstance(recommendation, dict)
